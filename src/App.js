@@ -1,11 +1,13 @@
 import './App.css';
-import Cards from './components/score-card/cards/cards';
+import Cards from './components/cards/cards';
 import Scorecard from "./components/score-card/ScoreCard";
+import Mode from "./components/mode"
 import { useEffect, useState} from 'react';
 function App() {
   const [memory,setMemory] = useState([]);
   const [score,setScore] = useState(0);
-    const [bestScore,setBestScore] = useState(0);
+  const [bestScore,setBestScore] = useState(0);
+  const [currentMode,setCurrentMode] = useState(5);
     
     const handleScore = ()=>{
         setScore(score+1);
@@ -35,10 +37,17 @@ function App() {
       }
   },[memory])
 
+  const handleModeChange  = (e)=>{
+      if(e.target.value==="easy")setCurrentMode(5);
+      else if(e.target.value==="medium")setCurrentMode(8);
+      else if(e.target.value==="hard")setCurrentMode(12);
+  }
+
   return (
     <div>
       <Scorecard score={score}  bestScore={bestScore}/>
-      <Cards handleChange={handleChange} memory={memory} score={score} handleBestScore={handleBestScore} handleScore={handleScore}/>
+      <Mode handleModeChange={handleModeChange} currentMode={currentMode}/>
+      <Cards mode={currentMode} handleChange={handleChange} memory={memory} score={score} handleBestScore={handleBestScore} handleScore={handleScore}/>
     </div>
   );
 }
