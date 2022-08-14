@@ -10,7 +10,7 @@ function App() {
   const [currentMode,setCurrentMode] = useState(5);
     
     const handleScore = ()=>{
-        setScore(score+1);
+        setScore((score)=>score+1);
     }
 
     const handleBestScore = ()=>{
@@ -20,7 +20,8 @@ function App() {
   const handleChange = (value)=>{
       // if value does not exists in array
       if(!memory.includes(value)){
-          setMemory([...memory,value]);
+          console.log("Memory",memory);
+          setMemory((memory)=>[...memory,value]);
           handleScore();
       }else if(memory.includes(value)){
           // if value exists in array
@@ -30,7 +31,7 @@ function App() {
       }
   }
     useEffect(()=>{
-      if(memory.length===5){
+      if(memory.length===currentMode){
           alert("You Won");
           handleBestScore();
           setScore(0);

@@ -10,34 +10,41 @@ const Cards = (props)=>{
         for(let i=0;i<props.mode;i++){
             // cards.push(<Card key={i} handleChange={props.handleChange} shuffleCards={shuffleCards} score={score} handleScore={handleScore} handleBestScore={handleBestScore}/>);
             setCards((cards)=>[...cards,<Card key={i} handleChange={props.handleChange} shuffleCards={shuffleCards} score={score} handleScore={handleScore} handleBestScore={handleBestScore}/>]);
-            
         }
     };
     const shuffleCards = ()=>{
-        cards.sort(()=>Math.random()-0.5);
+            // shuffle the cards state
+            setCards((cards)=>{
+                // create new array
+                let newCards = [...cards];
+                newCards.sort(()=>Math.random()-0.5);
+                return newCards;
+                // loop through the array
+            });
     };
-
+    
+    // if(cards.length===0){
+    //     createCards();
+    // }else{
+    //     shuffleCards();
+    // }
     useEffect(()=>{
-        if(!isLoading){
-            setIsLoading(true);
-        }else{
+            console.log("mode change",cards.length);
             setCards([]);
-        }
+            setIsLoading(false);
+            // createCards();
     },[props.mode])
 
     useEffect(()=>{
-        console.log("cards changed");
-        if(cards.length===0){
+        if(!isLoading){
             createCards();
+            setIsLoading(true);
         }
-    },[cards])
-
-
+    },[isLoading])
 
     return(
         <div>
-            {shuffleCards()}
-            {cards}
+            {cards}{console.log("rendering cards",cards)}{ console.log(isLoading)}
         </div>
     )
 }
