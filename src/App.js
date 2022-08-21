@@ -12,30 +12,28 @@ function App() {
     const handleScore = ()=>{
         setScore((score)=>score+1);
     }
-
     const handleBestScore = ()=>{
         setBestScore(score);
     }
   
   const handleChange = (value)=>{
-      // if value does not exists in array
-      if(!memory.includes(value)){
-          console.log("Memory",memory);
-          setMemory((memory)=>[...memory,value]);
-          handleScore();
-      }else if(memory.includes(value)){
-          // if value exists in array
-          setMemory([]);
-          handleBestScore(score);
-          setScore(0);
-      }
+      setMemory((memory)=>[...memory,value]);
   }
-    useEffect(()=>{
-      if(memory.length===currentMode){
-          alert("You Won");
-          handleBestScore();
-          setScore(0);
-      }
+  useEffect(()=>{
+    // check for duplicates in memory
+    let duplicates = Array.from(new Set(memory));
+    if(duplicates.length !== memory.length){
+        setMemory([]);
+        handleBestScore();
+        setScore(0);
+    }else if(memory.length>0){
+        handleScore();
+    }
+    if(memory.length===currentMode){
+      alert("You Won");
+      setBestScore(currentMode);
+      setScore(0);
+  }
   },[memory])
 
   const handleModeChange  = (e)=>{
