@@ -27,14 +27,16 @@ function App() {
         handleBestScore();
         setScore(0);
     }else if(memory.length>0){
+        console.log("memory length>0");
         handleScore();
     }
     if(memory.length===currentMode){
       alert("You Won");
       setBestScore(currentMode);
       setScore(0);
+      setMemory([]);
   }
-  },[memory])
+  },[memory,currentMode])
 
   const handleModeChange  = (e)=>{
       if(e.target.value==="easy")setCurrentMode(5);
