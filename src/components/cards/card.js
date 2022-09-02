@@ -1,5 +1,5 @@
 import {useHttp} from "../hooks/httpfetcher";
-
+import './card.css';
 
 const Card = (props)=>{
     const [isRandomWordLoading,randomWord] = useHttp("https://random-word-api.herokuapp.com/word",[]);

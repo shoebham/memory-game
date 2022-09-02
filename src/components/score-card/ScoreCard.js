@@ -1,11 +1,12 @@
 import React from 'react';
+import './ScoreCard.css';
 
 const Scorecard=(props)=>{
     const {score,bestScore} = props;
     return(
-        <div>
-            <h1>Score:{score}</h1>
-            <h1>Best Score:{bestScore}</h1>
+        <div className='scorecard'>
+            <h1 className='score'>Score: {score}</h1>
+            <h1 className='bestScore'>Best Score: {bestScore}</h1>
         </div>
     )
 }

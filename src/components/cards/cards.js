@@ -1,6 +1,7 @@
 
 import {useState,useEffect } from "react";
 import Card from "./card"
+import './cards.css'
 const Cards = (props)=>{
     const [cards,setCards] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
@@ -38,7 +39,7 @@ const Cards = (props)=>{
     },[isLoading])
 
     return(
-        <div>
+        <div className="cards">
             {cards}{console.log("rendering cards",cards)}
         </div>
     )

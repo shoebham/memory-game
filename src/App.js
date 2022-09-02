@@ -1,7 +1,7 @@
 import './App.css';
 import Cards from './components/cards/cards';
 import Scorecard from "./components/score-card/ScoreCard";
-import Mode from "./components/mode"
+import Mode from "./components/mode/mode"
 import { useEffect, useState} from 'react';
 function App() {
   const [memory,setMemory] = useState([]);

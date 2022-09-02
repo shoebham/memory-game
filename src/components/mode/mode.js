@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
+import './mode.css' 
 
 const Mode = (props)=>{
     return (
-    <div>
-        <h1>Mode</h1>
+    <div className="gameMode">
+        <h3>Mode</h3>
         <input type="radio" value="easy" name="mode" checked={props.currentMode===5} onChange={props.handleModeChange}/>
         <label htmlFor="easy">Easy</label>
         <input type="radio" value="medium" name="mode" checked={props.currentMode===8} onChange={props.handleModeChange}/>
