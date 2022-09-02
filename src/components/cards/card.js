@@ -10,7 +10,7 @@ const Card = (props)=>{
     const [isLoading,response] = useHttp(url,[randomWord]);
 
     const handleClick = ()=>{
-        props.handleChange(response.data.images.downsized.url);
+        props.handleChange(response.data.images.preview_gif.url);
         props.shuffleCards();
     }
 
