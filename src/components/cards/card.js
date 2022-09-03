@@ -16,7 +16,7 @@ const Card = (props)=>{
 
     return(
         <div className="card" onClick={handleClick}>
-            {response&&!isLoading&&<img width="200" height="200" src={response.data.images.downsized.url} alt=""/>}  
+            {response&&response.data&&!isLoading&&<img width="200" height="200" src={response.data.images.preview_gif.url} alt=""/>}  
             <p>{randomWord}</p>
         </div>
     )
